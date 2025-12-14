@@ -1,0 +1,34 @@
+{
+  "version": "1.0.0",
+  "description": "Initial database schema for logistics system",
+  "date": "2024-03-17",
+  "changes": [
+    {
+      "table": "orders",
+      "operation": "create",
+      "schema": {
+        "id": "integer primary key autoincrement",
+        "customer": "text not null",
+        "cargo": "text not null",
+        "weight": "integer",
+        "from_location": "text not null",
+        "to_location": "text not null",
+        "status": "text default 'new'",
+        "created_at": "timestamp default current_timestamp",
+        "updated_at": "timestamp default current_timestamp"
+      }
+    },
+    {
+      "table": "tracking_events",
+      "operation": "create",
+      "schema": {
+        "id": "integer primary key autoincrement",
+        "order_id": "integer references orders(id)",
+        "event_type": "text not null",
+        "description": "text",
+        "location": "text",
+        "created_at": "timestamp default current_timestamp"
+      }
+    }
+  ]
+}

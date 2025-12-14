@@ -1,0 +1,26 @@
+{
+  "version": "1.1.0",
+  "description": "Add driver information and cargo details",
+  "date": "2024-03-20",
+  "changes": [
+    {
+      "table": "orders",
+      "operation": "add_column",
+      "column": "driver_name",
+      "type": "text default 'Не назначен'"
+    },
+    {
+      "table": "orders",
+      "operation": "add_column",
+      "column": "cargo_value",
+      "type": "real",
+      "default": 0
+    },
+    {
+      "table": "orders",
+      "operation": "add_column",
+      "column": "insurance_required",
+      "type": "boolean default false"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "version": "1.2.0",
+  "description": "Add priority field and estimated delivery date",
+  "date": "2024-03-25",
+  "changes": [
+    {
+      "table": "orders",
+      "operation": "add_column",
+      "column": "priority",
+      "type": "text default 'normal'",
+      "check": "priority in ('low', 'normal', 'high', 'urgent')"
+    },
+    {
+      "table": "orders",
+      "operation": "add_column",
+      "column": "estimated_delivery",
+      "type": "date"
+    },
+    {
+      "table": "orders",
+      "operation": "create_index",
+      "index_name": "idx_orders_status",
+      "columns": ["status", "priority"]
+    }
+  ]
+}

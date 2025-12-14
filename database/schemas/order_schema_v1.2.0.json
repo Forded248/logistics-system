@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Order Schema v1.2.0",
+  "description": "Schema for transport orders in logistics system",
+  "type": "object",
+  "required": ["customer", "cargo", "from_location", "to_location"],
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier"
+    },
+    "customer": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 100,
+      "description": "Customer/company name"
+    },
+    "cargo": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 50,
+      "description": "Type of cargo"
+    },
+    "weight": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000,
+      "description": "Weight in kg"
+    },
+    "from_location": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Departure location"
+    },
+    "to_location": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Destination location"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["new", "confirmed", "loading", "in_transit", "delivered", "cancelled"],
+      "default": "new"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "urgent"],
+      "default": "normal"
+    },
+    "driver_name": {
+      "type": "string",
+      "default": "Не назначен"
+    },
+    "cargo_value": {
+      "type": "number",
+      "minimum": 0,
+      "default": 0
+    },
+    "insurance_required": {
+      "type": "boolean",
+      "default": false
+    },
+    "estimated_delivery": {
+      "type": "string",
+      "format": "date"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
